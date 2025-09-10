@@ -10,9 +10,9 @@ def show_main(request):
 
     context = {
         'app' : 'BeliBola',
-        'npm' : '240123456',
-        'name': 'Haru Urara',
-        'class': 'PBP A',
+        'npm' : '2406404112',
+        'name': 'Sherin Urara',
+        'class': 'PBP B',
         'products_list': products_list, 
     }
 
