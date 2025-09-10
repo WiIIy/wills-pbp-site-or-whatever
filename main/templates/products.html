@@ -3,7 +3,7 @@
 <p><a href="{% url 'main:show_main' %}"><button>← Back to products List</button></a></p>
 
 <h1>{{ products.name }}</h1>
-<h1>{{ products.price }}</h1>
+<h2>{{ products.price }}</h2>
 <p>{% if products.is_featured %} | 
     <b>Featured</b>{% endif %} | <i>{{ products.created_at|date:"d M Y, H:i" }}</i> 
     </p>
