@@ -35,9 +35,24 @@
 
   <p><a href="{% url 'main:show_products' products.id %}"><button>Read More</button></a></p>
 </div>
+{% endfor %}
 
 <hr>
-{% endfor %}
+<h5>Username: {{ username }}</h5>
+<a href="{% url 'main:logout' %}">
+  <button>Logout</button>
+</a>
+<h5>Sesi terakhir login: {{ last_login }}</h5>
+
+<hr>
+<a href="?filter=all">
+    <button type="button">All Articles</button>
+</a>
+<a href="?filter=my">
+    <button type="button">My Articles</button>
+</a> 
+
+<hr>
 
 {% endif %}
  {% endblock content %}

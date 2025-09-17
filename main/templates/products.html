@@ -5,7 +5,7 @@
 <h1>{{ products.name }}</h1>
 <h2>{{ products.price }}</h2>
 <p>{% if products.is_featured %} | 
-    <b>Featured</b>{% endif %} | <i>{{ products.created_at|date:"d M Y, H:i" }}</i> 
+    <b>Featured</b>{% endif %} | Seller: <i>{{ products.user }}</i>
     </p>
 
 {% if products.thumbnail %}

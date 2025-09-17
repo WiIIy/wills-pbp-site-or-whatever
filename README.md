@@ -1,6 +1,12 @@
 Link to site:
 https://sherin-khaira-willspbpsiteorwhatever.pbp.cs.ui.ac.id/
 
+
+TUGAS 4:
+1.
+
+
+TUGAS 2:
 1. I followed most of the tutorial but found a /TemplateNotFound error which is fixed by adding 'main' to the INSTALLED_APPS variable within football_news/settings.py
 
 2. Client Request -> urls.py (wills-pbp-site-or-whatever) -> (if valid endpoint) go to include('main.urls') -> urls.py (main)

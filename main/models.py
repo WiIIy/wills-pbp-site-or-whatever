@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.contrib.auth.models import User
 
 class Products(models.Model):
     CATEGORY_CHOICES = [
@@ -11,6 +12,8 @@ class Products(models.Model):
         ('signed', 'Signed'),
     ]
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField()
     price = models.IntegerField()
     description = models.TextField()
