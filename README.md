@@ -13,7 +13,19 @@ Cookies
 + Disimpan di browser/client
 + Tidak perlu banyak storage di server
 + Bisa lintas request tanpa
+- Bisa diubah client, harus divalidasi server
+- Ukuran kurleb 4kb
+- Bisa diblokir browser/hiland jika user clear  cache
 
+Sessions
++ Disimpan di server, aman
++ Menyimpan data besar dan kompleks
+- Membebani server
+- Butuh cookie untuk menyimpan session ID (jadi tetap tergantung cookies, meski isinya bukan data sensitif)
+
+4. Tidak sepenuhnya aman, ada beberapa risiko potensial seperti session hijacking, XSS attack, dan CSRF forgery. Django memberi pengaturan keamanan di settings.py, seperti SESSION_COOKIE_SECURE, SESSION_COOKIE_HTTPONLY, CSRF_COOKIE_SECURE, CSRF_COOKIE_HTTPONLY,django.middleware.csrf.CsrfViewMiddleware, dll.
+
+5. Banyak copy paste dari Tutorial, tinggal diubah sesuai kebutuhan
 
 TUGAS 2:
 1. I followed most of the tutorial but found a /TemplateNotFound error which is fixed by adding 'main' to the INSTALLED_APPS variable within football_news/settings.py
