@@ -33,6 +33,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "152.118.29.139", "sherin-khaira-willspbpsiteorwhatever.pbp.cs.ui.ac.id", "pbp.cs.ui.ac.id/sherin.khaira/willspbpsiteorwhatever"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://sherin-khaira-willspbpsiteorwhatever.pbp.cs.ui.ac.id"
+]
 
 # Application definition
 
