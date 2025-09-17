@@ -97,7 +97,6 @@ def login_user(request):
             login(request, user)
             response = HttpResponseRedirect(reverse("main:show_main"))
             response.set_cookie('last_login', str(datetime.datetime.now()))
-            response.set_cookie('username', str(user))
             return response
 
     else:
@@ -109,5 +108,4 @@ def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
-    response.delete_cookie('username')
     return response

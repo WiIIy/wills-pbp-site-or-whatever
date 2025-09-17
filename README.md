@@ -3,7 +3,16 @@ https://sherin-khaira-willspbpsiteorwhatever.pbp.cs.ui.ac.id/
 
 
 TUGAS 4:
-1.
+1.AuthenticationForm - form bawaan Django yang digunakan untuk proses login dari modul django.contrib.auth.forms. Menyediakan field standar seperti username dan password, serta melakukan validasi kredensial dengan sistem autentikasi Django.
+
+2.Autentikasi -> Proses memverifikasi identitas pengguna. "Apakah kamu benar-benar orang yang kamu klaim?"
+Otorisasi -> Proses memberi atau membatasi akses ke resource berdasarkan identitas pengguna yang sudah terverifikasi, misalnya pengguna yg bukan admin tidak boleh akses laman admin."Apa saja yang boleh kamu lakukan?"
+
+3. 
+Cookies
++ Disimpan di browser/client
++ Tidak perlu banyak storage di server
++ Bisa lintas request tanpa
 
 
 TUGAS 2:
