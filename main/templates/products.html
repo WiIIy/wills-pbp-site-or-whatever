@@ -5,8 +5,15 @@
 <h1>{{ products.name }}</h1>
 <h2>{{ products.price }}</h2>
 <p>{% if products.is_featured %} | 
-    <b>Featured</b>{% endif %} | Seller: <i>{{ products.user }}</i>
+    <b>Featured</b>{% endif %} |
     </p>
+    <p>{{products.description}}</p>
+
+    {% if products.user %}
+    <p>Seller: {{ products.user.username }}</p>
+    {% else %}
+    <p>Seller: Anonymous</p>
+    {% endif %}
 
 {% if products.thumbnail %}
 <img src="{{ product.thumbnail }}" alt="Product thumbnail" width="300">
