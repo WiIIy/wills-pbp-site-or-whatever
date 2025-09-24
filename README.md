@@ -1,8 +1,29 @@
 Link to site:
 https://sherin-khaira-willspbpsiteorwhatever.pbp.cs.ui.ac.id/
 
+TUGAS 5
 
-TUGAS 4:
+1. Prioritas tinggi ke rendah
+- inline styling (<div>style=""</div>)
+- ID selector (#header { background-color: red;})
+- class selector, psuedo class, attribute (:hover, :active)
+- element selector, universal, psuedo element (div, p, ::before, ::after, *)
+
+2. Karena memberikan pengguna pengalaman yang seamless. bayangkan kalau di screen hape, resolusinya tetap resolusi komputer. tentu tidak enak digunakan karena tombol cenderung terlalu kecil. Tidak hanya untuk website yang memiliki dua tampilan, responsive design juge dapat dilihat ketika sebuah window dikecilkan, atau menggunakan screen yang ukurannya lebih kecil atau lebih besar dari biasanya. Ini agar penggunaan website mudah dan tampaknya bersih dan konsisten
+
+3. ![screenshot](images/marginborderpadding.jpeg)
+border - mengelilingi elemen, biasanya fungsinya visual, untuk dekorasi
+padding - jarak konten di dalam elemen, agar tulisan atau elemen anak lebih jelas dan tidak menyentuh ujung dari elemen induknya
+margin - space yang mengelilingi elemen, untuk memberi jarak antara elemen itu dengan elemen lain (selama posisi tidak absolut)
+
+4. Flexbox adalah tipe yang digunakan kebanyakan industri (di banding absolute positioning dan relative positioning) karena potensi reactive-stylingnya, elemen flex akan secara automatis memenuhi screen tergantung settingan-nya, baik vertikal maupun horizontal. Grid-Layout adalah sebuah layout yang memiliki kolom dan baris, bisa untuk sebuah situs yang memiliki sejenis tabel yang menggunakan kolom dan baris untuk menampilkan konten.
+
+5. Copy paste fungsi views dari tutorial dan meng-edit isinya agar berbeda, karena penggunaan template aken membuat proses development jauh lebih efisien. Penggunaan tools yang sudah dibuat dibandingkan menulis dari kosong sendiri adalah sesuatu yang semua developer harus pelajari.
+
+
+----------------------------------------------------------
+
+TUGAS 4
 1.AuthenticationForm - form bawaan Django yang digunakan untuk proses login dari modul django.contrib.auth.forms. Menyediakan field standar seperti username dan password, serta melakukan validasi kredensial dengan sistem autentikasi Django.
 
 2.Autentikasi -> Proses memverifikasi identitas pengguna. "Apakah kamu benar-benar orang yang kamu klaim?"
@@ -27,7 +48,11 @@ Sessions
 
 5. Banyak copy paste dari Tutorial, tinggal diubah sesuai kebutuhan
 
-TUGAS 2:
+
+----------------------------------------------------------
+
+
+TUGAS 2
 1. I followed most of the tutorial but found a /TemplateNotFound error which is fixed by adding 'main' to the INSTALLED_APPS variable within football_news/settings.py
 
 2. Client Request -> urls.py (wills-pbp-site-or-whatever) -> (if valid endpoint) go to include('main.urls') -> urls.py (main)
