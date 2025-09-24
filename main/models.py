@@ -12,7 +12,7 @@ class Products(models.Model):
         ('signed', 'Signed'),
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    seller = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField()
     price = models.IntegerField()

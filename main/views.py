@@ -13,7 +13,12 @@ from django.core import serializers
 # Create your views here.
 @login_required(login_url='/login')
 def show_main(request):
-    products_list = Products.objects.all()
+    filter_type = request.GET.get('filter', 'all')  # default to 'all'
+
+    if filter_type == "my":
+        products_list = Products.objects.filter(seller=request.user)
+    else:
+        products_list = Products.objects.all()
 
     context = {
         'app' : 'BeliBola',
@@ -32,13 +37,26 @@ def create_products(request):
     form = ProductForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
-        product_entry = form.save(commit = False)
-        product_entry.user = request.user 
+        product_entry = form.save(commit=False)
+        product_entry.seller = request.user
         product_entry.save()
         return redirect('main:show_main')
 
     context = {'form': form}
     return render(request, "form.html", context)
+
+def edit_product(request, id):
+    news = get_object_or_404(Products, pk=id)
+    form = ProductForm(request.POST or None, instance=product)
+    if form.is_valid() and request.method == 'POST':
+        form.save()
+        return redirect('main:show_main')
+
+    context = {
+        'form': form
+    }
+
+    return render(request, "edit_product.html", context)
 
 @login_required(login_url='/login')
 def show_products(request, id):
@@ -51,6 +69,10 @@ def show_products(request, id):
 
     return render(request, "products.html", context)
 
+def delete_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    product.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
 
 def show_xml(request):
      products_list = Products.objects.all()
