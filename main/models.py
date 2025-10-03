@@ -4,12 +4,10 @@ from django.contrib.auth.models import User
 
 class Products(models.Model):
     CATEGORY_CHOICES = [
-        ('bola biasa', 'Bola Biasa'),
-        ('update', 'Update'),
-        ('exclusive', 'Exclusive'),
-        ('bola luar biasa', 'Bola Luar Biasa'),
-        ('kolektor', 'Kolektor'),
-        ('signed', 'Signed'),
+        ('equipment', 'Equipment'),
+        ('apparel', 'Apparel'),
+        ('shoes', 'Shoes'),
+        ('collector', 'Collector'),
     ]
 
     seller = models.ForeignKey(User, on_delete=models.CASCADE, null=True)

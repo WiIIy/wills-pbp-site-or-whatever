@@ -1,6 +1,9 @@
 Link to site:
 https://sherin-khaira-willspbpsiteorwhatever.pbp.cs.ui.ac.id/
 
+TUGAS 6
+
+
 TUGAS 5
 
 1. Prioritas tinggi ke rendah
