@@ -115,7 +115,6 @@ function buildProductCardElement(productItem) {
   productElement.className = 'bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col h-full';
 
   const detailLink = `{% url 'main:show_products' '00000000-0000-0000-0000-000000000000' %}`.replace('00000000-0000-0000-0000-000000000000', productItem.id);
-  const editLink = `{% url 'main:edit_product' '00000000-0000-0000-0000-000000000000' %}`.replace('00000000-0000-0000-0000-000000000000', productItem.id);
   const deleteLink = `{% url 'main:delete_product' '00000000-0000-0000-0000-000000000000' %}`.replace('00000000-0000-0000-0000-000000000000', productItem.id);
 
   const categoryLabel = getReadableCategoryName(productItem.category);
@@ -131,7 +130,7 @@ function buildProductCardElement(productItem) {
 
   const editDeleteButtons = CURRENT_USER_ID && Number(CURRENT_USER_ID) === Number(productItem.user_id)
     ? `<div class='flex space-x-2'>
-        <a href='${editLink}' class='text-gray-600 hover:text-gray-700 text-sm transition-colors'>Edit</a>
+        <a href="#" class='text-gray-600 hover:text-gray-700 text-sm transition-colors'>Edit</a>
         <a href='${deleteLink}' class='text-red-600 hover:text-red-700 text-sm transition-colors' onclick='return confirm("Are you sure you want to delete this article?")'>Delete</a>
       </div>`
     : '';

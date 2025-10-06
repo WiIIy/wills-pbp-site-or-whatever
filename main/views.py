@@ -49,7 +49,7 @@ def create_products(request):
     return render(request, "form.html", context)
 
 def edit_product(request, id):
-    news = get_object_or_404(Products, pk=id)
+    product = get_object_or_404(Products, pk=id)
     form = ProductForm(request.POST or None, instance=product)
     if form.is_valid() and request.method == 'POST':
         form.save()
@@ -73,7 +73,7 @@ def show_products(request, id):
     return render(request, "products.html", context)
 
 def delete_product(request, id):
-    product = get_object_or_404(Product, pk=id)
+    product = get_object_or_404(Products, pk=id)
     product.delete()
     return HttpResponseRedirect(reverse('main:show_main'))
 
@@ -86,7 +86,7 @@ def show_json(request):
     products_list = Products.objects.all()
     data = [
         {
-            'id': str(news.id),
+            'id': str(products.id),
             'title': products.name,
             'content': products.price,
             'category': products.category,
@@ -108,18 +108,18 @@ def show_xml_by_id(request, products_id):
    except products.DoesNotExist:
        return HttpResponse(status=404)
 
-def show_json_by_id(request, news_id):
+def show_json_by_id(request, products_id):
     try:
-        products = Products.objects.select_related('user').get(pk=news_id)
+        products = Products.objects.select_related('seller').get(pk=products_id)
         data = {
-            'id': str(news.id),
-            'title': products.name,
-            'content': products.price,
+            'id': str(products.id),
+            'name': products.name,
+            'price': products.price,
             'category': products.category,
             'thumbnail': products.thumbnail,
             'description': products.description,
             'is_featured': products.is_featured,
-            'seller': products.seller,
+            'seller': str(products.seller),
         }
         return JsonResponse(data)
     except Products.DoesNotExist:
@@ -168,7 +168,7 @@ def add_product_entry_ajax(request):
     category = request.POST.get("category")
     thumbnail = request.POST.get("thumbnail")
     is_featured = request.POST.get("is_featured") == 'on'  # checkbox handling
-    seller = request.POST.get("seller")
+    seller = request.user
 
     new_product = Products(
         name=name, 
@@ -182,3 +182,25 @@ def add_product_entry_ajax(request):
     new_product.save()
 
     return HttpResponse(b"CREATED", status=201)
+
+@csrf_exempt
+@require_POST
+@login_required(login_url='/login')
+def edit_product_ajax(request, id):
+    try:
+        prod = Products.objects.get(pk=id)
+    except Products.DoesNotExist:
+        return HttpResponse(b"NOT FOUND", status=404)
+
+    prod.name = request.POST.get("edit-name")
+    prod.price = request.POST.get("edit-price")
+    prod.description = request.POST.get("edit-description")
+    prod.category = request.POST.get("edit-category")
+    prod.thumbnail = request.POST.get("edit-thumbnail")
+    prod.is_featured = request.POST.get("edit-is_featured") == 'on'
+    
+
+
+    prod.save()
+
+    return HttpResponse(b"UPDATED", status=200)
