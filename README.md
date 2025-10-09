@@ -2,6 +2,18 @@ Link to site:
 https://sherin-khaira-willspbpsiteorwhatever.pbp.cs.ui.ac.id/
 
 TUGAS 6
+1. AJAX/Asynchronous JavaScript and XML(dan json) memungkinkan client untuk berkomunikasi ke server tapa perlu memuat ulang seluruh halaman
+2. Client action -> Client javascript -> Django Server -> Django view -> Client javascript callback (async functions)
+3. - AJAX membuat loading halaman lebih cepat karena tidak harus me-reload ulang dan membuat User Experience lebih baik
+- Menghemat bandwidth karena transfer data efisien
+- Asynchronous operations memungkinkan operasi terjadii di latar belakang tanpa mengganggu interaksi pengguna
+4. AJAX hanya cara transportasi data dan bukan mekanisme keamanan. Beberapa Langkah keamanan untuk Django site
+- Menggunakan https (protokol baru yang lebih secure)
+- Perlindungan CSRF (agar tidak kena cross-site request forgery)
+- Validasi server-side (agar tidak dapat dimanipulasi variabel client-side)
+- Rate limiting (mencegah serangan brute force Ketika ada aktivitas mencurigakan)
+- Autentikasi dan Authorization setelah login, penerapan session, dll.
+5. AJAX mengubah responsivitas sebuah website dan pengguna tidak diinterupsi dengan pemuatan yang lebih lama. Feedback cenderung langsung dan cepat, dan adanya lazy loading mengurangi clutter serta load dan memfokuskan resource pada tugas yang perlu dilakukan
 
 
 TUGAS 5
