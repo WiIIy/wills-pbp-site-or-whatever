@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-p7e@yqb9s=nfp4k2e(#tg-q28owodrp3ezabgu0fg@&6&ol-6s
 PRODUCTION = os.getenv('PRODUCTION', 'False').lower() == 'true'
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "152.118.29.139", "sherin-khaira-willspbpsiteorwhatever.pbp.cs.ui.ac.id", "pbp.cs.ui.ac.id/sherin.khaira/willspbpsiteorwhatever"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "152.118.29.139", "sherin-khaira-willspbpsiteorwhatever.pbp.cs.ui.ac.id", "pbp.cs.ui.ac.id/sherin.khaira/willspbpsiteorwhatever", "10.0.2.2"]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://sherin-khaira-willspbpsiteorwhatever.pbp.cs.ui.ac.id"
@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'authentication',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +60,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
 
 ROOT_URLCONF = 'football_news.urls'
 

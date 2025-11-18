@@ -9,11 +9,32 @@ from main.models import Products
 from main.forms import ProductForm
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
+import requests
 
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
 # Create your views here.
+
+def proxy_image(request):
+    image_url = request.GET.get('url')
+    if not image_url:
+        return HttpResponse('No URL provided', status=400)
+    
+    try:
+        # Fetch image from external source
+        response = requests.get(image_url, timeout=10)
+        response.raise_for_status()
+        
+        # Return the image with proper content type
+        return HttpResponse(
+            response.content,
+            content_type=response.headers.get('Content-Type', 'image/jpeg')
+        )
+    except requests.RequestException as e:
+        return HttpResponse(f'Error fetching image: {str(e)}', status=500)
+
+
 @login_required(login_url='/login')
 def show_main(request):
     filter_type = request.GET.get('filter', 'all')  # default to 'all'
@@ -93,7 +114,7 @@ def show_json(request):
             'thumbnail': products.thumbnail,
             'description': products.description,
             'is_featured': products.is_featured,
-            'seller': products.seller,
+            'seller': products.seller.username if products.seller else "N/A",
         }
         for products in products_list
     ]
