@@ -23,13 +23,14 @@ from django.views.decorators.http import require_POST
 def create_news_flutter(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        name = strip_tags(data.get("name", ""))  # Strip HTML tags
-        description = strip_tags(data.get("description", ""))  # Strip HTML tags
-        price = strip_tags(data.get("price", ""))  # Strip HTML tags
+        name = strip_tags(data.get("name", ""))
+        description = strip_tags(data.get("description", ""))
+        price = strip_tags(data.get("price", ""))
         category = data.get("category", "")
         thumbnail = data.get("thumbnail", "")
         is_featured = data.get("is_featured", False)
-        user = request.user
+        
+        # request.user is available because CookieRequest sends the session ID
         
         new_product = Products(
             name=name, 
@@ -38,6 +39,7 @@ def create_news_flutter(request):
             description=description,
             thumbnail=thumbnail,
             is_featured=is_featured,
+            seller=request.user  # <--- ADD THIS LINE
         )
         new_product.save()
         
